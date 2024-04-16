@@ -1,15 +1,16 @@
-import HomePage from "@pages/home";
 import { useMemo } from "react";
-import Box from '@shared/components/Box';
-import SidebarItem from '@shared/components/SidebarItem';
+import Box from '@shared/components/box/Box';
+import SidebarItem from '@shared/components/sidebar/SidebarItem';
 import { IoNewspaperOutline, IoHomeOutline } from "react-icons/io5";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { AppRoutes } from "src/app-routes";
+import Favorites from "../favorites/Favorites";
 
 interface SidebarProps {
     children?: React.ReactNode;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: React.FC<SidebarProps> = () => {
 
     const location = useLocation();
     const { pathname } = location;
@@ -19,13 +20,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
             icon: IoHomeOutline,
             label: 'Home',
             active: pathname === '/',
-            href: '/'
+            href: AppRoutes.Home
         },
         {
             label: 'Feed',
             active: pathname === '/feed',
             icon: IoNewspaperOutline,
-            href: '/feed'
+            href: AppRoutes.Feed
         },
     ], [pathname]);
 
@@ -58,7 +59,9 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                     </div>
                 </Box>
                 <Box className="overflow-y-auto h-full">
-                    H2
+                    <Favorites>
+                        
+                    </Favorites>
                 </Box>
             </div>
         </div>
