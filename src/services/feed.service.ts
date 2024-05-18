@@ -1,9 +1,11 @@
-import { F1News } from "src/models/f1news.model";
+import { useQuery } from "@tanstack/react-query";
+import { F1NewsData } from "src/models/f1news.model";
 
-export class FeedService {
-    async getFeed(): Promise<F1News[]> {
-        const response = await fetch('http://140.238.238.174:3049/feed/getNews');
-        const news: F1News[] = await response.json();
-        return news;
-    }
+export function useF1News(){
+    return useQuery<F1NewsData[]>(
+        {
+            queryKey: ['f1News'],
+            queryFn: () => fetch('http://140.238.238.174:3049/feed/getNews').then(x => x.json())
+        }
+    );
 }

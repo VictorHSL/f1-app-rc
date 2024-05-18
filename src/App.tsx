@@ -5,13 +5,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { AppRoutes } from "./app-routes"
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { IocManager, IocManagerServices } from "./services/dependency-injection"
-import { FeedService } from "./services/feed.service"
 
 function App() {
 
   const queryClient = new QueryClient();
   const dependencies: IocManagerServices = {
-    feedService: new FeedService()
   };
     
   return (

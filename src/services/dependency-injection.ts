@@ -1,8 +1,6 @@
 import { createContext, useContext } from 'react';
-import { FeedService } from './feed.service';
 
 export interface IocManagerServices {
-    feedService: FeedService;
 }
 
 const initialState: IocManagerServices | null = null;

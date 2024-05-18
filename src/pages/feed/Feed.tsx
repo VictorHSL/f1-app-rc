@@ -1,22 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
-import { useIocManager } from "src/services/dependency-injection";
+import F1News from "@shared/components/f1-news/F1News";
+import { useF1News } from "src/services/feed.service";
 
 const FeedPage = () => {
-    const { feedService } = useIocManager()!;
-    const newsData = useQuery(
-        {
-            queryKey: ['f1News'],
-            queryFn: () => feedService.getFeed()
-        }
-    );
+    const newsData = useF1News();
 
     if(newsData.isLoading){
         return (<p>Loading...</p>);
     }
 
-    return newsData.data?.map((item, index) => <div key={index}>
-        {item.title}
-    </div>);
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {
+                newsData.data?.map((item, index) => <F1News f1NewsData={item} key={index.toString()} />)
+            }
+        </div>
+    );
 }
  
 export default FeedPage;

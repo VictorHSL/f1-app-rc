@@ -1,4 +1,4 @@
-export class F1News {
+export class F1NewsData {
     public sourceLink: string;
     public sourceName: string;
     public link: string;
