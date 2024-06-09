@@ -1,7 +1,8 @@
+import React from "react";
 import { MdFavorite } from "react-icons/md";
 
 
-const Favorites = () => {
+const Favorites: React.FC = () => {
     return ( 
     <div className="flex flex-col">
         <div

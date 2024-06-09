@@ -4,17 +4,15 @@ import Sidebar from "@shared/components/sidebar/Sidebar"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { AppRoutes } from "./app-routes"
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { IocManager, IocManagerServices } from "./services/dependency-injection"
+import { IocManagerProvider } from "./services/dependency-injection"
 
 function App() {
 
   const queryClient = new QueryClient();
-  const dependencies: IocManagerServices = {
-  };
     
   return (
     <QueryClientProvider client={queryClient}>
-      <IocManager.Provider value={dependencies}>
+      <IocManagerProvider>
         <div className="text-red-500 flex h-full">
           <BrowserRouter>
             <Sidebar></Sidebar>
@@ -26,7 +24,7 @@ function App() {
             </main>
           </BrowserRouter>
         </div>
-      </IocManager.Provider>
+      </IocManagerProvider>
     </QueryClientProvider>
     
   )
