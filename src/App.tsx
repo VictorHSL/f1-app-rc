@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { AppRoutes } from "./app-routes"
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { IocManagerProvider } from "./services/dependency-injection"
+import { Header } from "@shared/components/header/Header"
 
 function App() {
 
@@ -16,11 +17,16 @@ function App() {
         <div className="text-red-500 flex h-full">
           <BrowserRouter>
             <Sidebar></Sidebar>
-            <main className="h-full flwx-1 overflow-y-auto py-2">
-              <Routes>
-                <Route path={AppRoutes.Home} Component={HomePage} />
-                <Route path={AppRoutes.Feed} Component={FeedPage} />
-              </Routes>
+            <main>
+              <div className="rounded-lg h-full overflow-y-auto my-2 scroll-smooth no-scrollbar">
+                <Header></Header>
+                <div className="">
+                  <Routes>
+                    <Route path={AppRoutes.Home} Component={HomePage} />
+                    <Route path={AppRoutes.Feed} Component={FeedPage} />
+                  </Routes>
+                </div>
+              </div>
             </main>
           </BrowserRouter>
         </div>

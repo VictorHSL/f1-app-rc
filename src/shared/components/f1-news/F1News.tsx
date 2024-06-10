@@ -1,4 +1,4 @@
-import { F1NewsProps } from "./types";
+import { F1NewsProps } from "@shared/types/F1NewsProps";
 
 
 const F1News: React.FC<F1NewsProps> = ({ f1NewsData }: F1NewsProps) => {
